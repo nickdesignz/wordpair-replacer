@@ -1,0 +1,328 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPair Replacer 1.4.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Durchgezogen"
+msgstr "Durchgezogen"
+
+msgid "Gestrichelt"
+msgstr "Gestrichelt"
+
+msgid "Gepunktet"
+msgstr "Gepunktet"
+
+msgid "Doppelt"
+msgstr "Doppelt"
+
+msgid "Keine"
+msgstr "Keine"
+
+msgid "Keine Animation"
+msgstr "Keine Animation"
+
+msgid "Fade In"
+msgstr "Fade In"
+
+msgid "Slide In Left"
+msgstr "Slide In Left"
+
+msgid "Slide In Right"
+msgstr "Slide In Right"
+
+msgid "Slide In Up"
+msgstr "Slide In Up"
+
+msgid "Slide In Down"
+msgstr "Slide In Down"
+
+msgid "Zoom In"
+msgstr "Zoom In"
+
+msgid "Bounce"
+msgstr "Bounce"
+
+msgid "Pulse"
+msgstr "Pulse"
+
+msgid "Shake"
+msgstr "Shake"
+
+msgid "Blur In"
+msgstr "Blur In"
+
+msgid "Typing Effect"
+msgstr "Typing Effect"
+
+msgid "Glitch"
+msgstr "Glitch"
+
+msgid "Neon Glow"
+msgstr "Neon Glow"
+
+msgid "Text Shadow Glow"
+msgstr "Text Shadow Glow"
+
+msgid "Gradient Text"
+msgstr "Gradient Text"
+
+msgid "Gradient Animation"
+msgstr "Gradient Animation"
+
+msgid "Letter Spacing"
+msgstr "Letter Spacing"
+
+msgid "Reveal"
+msgstr "Reveal"
+
+msgid "Underline Slide"
+msgstr "Underline Slide"
+
+msgid "Wave Text"
+msgstr "Wave Text"
+
+msgid "Mask Reveal"
+msgstr "Mask Reveal"
+
+msgid "Clip Path Reveal"
+msgstr "Clip Path Reveal"
+
+msgid "Shimmer Text"
+msgstr "Shimmer Text"
+
+msgid "Stroke Text"
+msgstr "Stroke Text"
+
+msgid "Outline Fill"
+msgstr "Outline Fill"
+
+msgid "3D Text"
+msgstr "3D Text"
+
+msgid "Hover Highlight"
+msgstr "Hover Highlight"
+
+msgid "Skew Reveal"
+msgstr "Skew Reveal"
+
+msgid "Fade Up Words"
+msgstr "Fade Up Words"
+
+msgid "Fade In Letters"
+msgstr "Fade In Letters"
+
+msgid "Theme-Schrift übernehmen"
+msgstr "Theme-Schrift übernehmen"
+
+msgid "WordPair Replacer"
+msgstr "WordPair Replacer"
+
+msgid "Lade Daten..."
+msgstr "Lade Daten..."
+
+msgid "Gespeichert."
+msgstr "Gespeichert."
+
+msgid "Gelöscht."
+msgstr "Gelöscht."
+
+msgid "Diesen Eintrag wirklich löschen?"
+msgstr "Diesen Eintrag wirklich löschen?"
+
+msgid "Es ist ein Fehler aufgetreten."
+msgstr "Es ist ein Fehler aufgetreten."
+
+msgid "Noch keine Wortpaare vorhanden."
+msgstr "Noch keine Wortpaare vorhanden."
+
+msgid "Keine Berechtigung."
+msgstr "Keine Berechtigung."
+
+msgid "Wortpaar"
+msgstr "Wortpaar"
+
+msgid "Lege fest, welches Wort im Frontend automatisch ersetzt werden soll."
+msgstr "Lege fest, welches Wort im Frontend automatisch ersetzt werden soll."
+
+msgid "Originalwort"
+msgstr "Originalwort"
+
+msgid "Ersatzwort"
+msgstr "Ersatzwort"
+
+msgid "Aktiv"
+msgstr "Aktiv"
+
+msgid "Groß-/Kleinschreibung beachten"
+msgstr "Groß-/Kleinschreibung beachten"
+
+msgid "Nur ganze Wörter ersetzen"
+msgstr "Nur ganze Wörter ersetzen"
+
+msgid "Individuelles Styling"
+msgstr "Individuelles Styling"
+
+msgid "Optional pro Wortpaar überschreiben"
+msgstr "Optional pro Wortpaar überschreiben"
+
+msgid "Dieses Wortpaar individuell stylen"
+msgstr "Dieses Wortpaar individuell stylen"
+
+msgid "Speichern"
+msgstr "Speichern"
+
+msgid "Zurücksetzen"
+msgstr "Zurücksetzen"
+
+msgid "Gespeicherte Wortpaare"
+msgstr "Gespeicherte Wortpaare"
+
+msgid "Original"
+msgstr "Original"
+
+msgid "Ersatz"
+msgstr "Ersatz"
+
+msgid "Styling"
+msgstr "Styling"
+
+msgid "Aktionen"
+msgstr "Aktionen"
+
+msgid "Hinweis"
+msgstr "Hinweis"
+
+msgid "Plugin-Sprache"
+msgstr "Plugin-Sprache"
+
+msgid "Englisch ist standardmäßig aktiv. Die Sprache wird nach dem Speichern neu geladen."
+msgstr "Englisch ist standardmäßig aktiv. Die Sprache wird nach dem Speichern neu geladen."
+
+msgid "Aktive Wortpaare werden automatisch im Frontend ersetzt. Script-, Style-, Code-, SVG- und Textarea-Bereiche werden ausgelassen."
+msgstr "Aktive Wortpaare werden automatisch im Frontend ersetzt. Script-, Style-, Code-, SVG- und Textarea-Bereiche werden ausgelassen."
+
+msgid "Google Fonts sind aus Datenschutzgründen standardmäßig deaktiviert und werden im Frontend nur geladen, wenn sie aktiv eingeschaltet wurden."
+msgstr "Google Fonts sind aus Datenschutzgründen standardmäßig deaktiviert und werden im Frontend nur geladen, wenn sie aktiv eingeschaltet wurden."
+
+msgid "Allgemeines Styling"
+msgstr "Allgemeines Styling"
+
+msgid "Für alle ersetzten Texte"
+msgstr "Für alle ersetzten Texte"
+
+msgid "Google Fonts aktivieren"
+msgstr "Google Fonts aktivieren"
+
+msgid "Wenn deaktiviert, werden nur Systemschriften angezeigt und im Frontend keine externen Google-Font-Dateien geladen."
+msgstr "Wenn deaktiviert, werden nur Systemschriften angezeigt und im Frontend keine externen Google-Font-Dateien geladen."
+
+msgid "Eigenes CSS"
+msgstr "Eigenes CSS"
+
+msgid "Einstellungen speichern"
+msgstr "Einstellungen speichern"
+
+msgid "Typografie"
+msgstr "Typografie"
+
+msgid "Schrift, Größe, Stärke und Zeilenhöhe"
+msgstr "Schrift, Größe, Stärke und Zeilenhöhe"
+
+msgid "Schriftart"
+msgstr "Schriftart"
+
+msgid "(Google Font)"
+msgstr "(Google Font)"
+
+msgid "Schriftgröße"
+msgstr "Schriftgröße"
+
+msgid "Zeilenhöhe"
+msgstr "Zeilenhöhe"
+
+msgid "Schriftstärke"
+msgstr "Schriftstärke"
+
+msgid "Farben"
+msgstr "Farben"
+
+msgid "Textfarbe und Hintergrundfarbe"
+msgstr "Textfarbe und Hintergrundfarbe"
+
+msgid "Textfarbe"
+msgstr "Textfarbe"
+
+msgid "Hintergrundfarbe"
+msgstr "Hintergrundfarbe"
+
+msgid "Abstände"
+msgstr "Abstände"
+
+msgid "Padding mit eigener Einheit"
+msgstr "Padding mit eigener Einheit"
+
+msgid "Padding"
+msgstr "Padding"
+
+msgid "Rahmen"
+msgstr "Rahmen"
+
+msgid "Breite, Stil, Farbe und Radius"
+msgstr "Breite, Stil, Farbe und Radius"
+
+msgid "Rahmenstärke"
+msgstr "Rahmenstärke"
+
+msgid "Rahmenstil"
+msgstr "Rahmenstil"
+
+msgid "Rahmenfarbe"
+msgstr "Rahmenfarbe"
+
+msgid "Border Radius"
+msgstr "Border Radius"
+
+msgid "Text-Effekt"
+msgstr "Text-Effekt"
+
+msgid "Animationen und moderne Texteffekte"
+msgstr "Animationen und moderne Texteffekte"
+
+msgid "Effekt"
+msgstr "Effekt"
+
+msgid "Dauer in ms"
+msgstr "Dauer in ms"
+
+msgid "Verzögerung in ms"
+msgstr "Verzögerung in ms"
+
+msgid "Oben"
+msgstr "Oben"
+
+msgid "Rechts"
+msgstr "Rechts"
+
+msgid "Unten"
+msgstr "Unten"
+
+msgid "Links"
+msgstr "Links"
+
+msgid "Originalwort und Ersatzwort sind Pflichtfelder."
+msgstr "Originalwort und Ersatzwort sind Pflichtfelder."
+
+msgid "Speichern fehlgeschlagen."
+msgstr "Speichern fehlgeschlagen."
+
+msgid "Ungültige ID."
+msgstr "Ungültige ID."
+
+msgid "Löschen fehlgeschlagen."
+msgstr "Löschen fehlgeschlagen."
+
+msgid "Einstellungen gespeichert."
+msgstr "Einstellungen gespeichert."
