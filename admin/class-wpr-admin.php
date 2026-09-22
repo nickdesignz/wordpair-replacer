@@ -290,9 +290,9 @@ class WPR_Admin {
 							</div>
 
 							<div class="wpr-switch-grid">
-								<label><input type="checkbox" id="wpr-is-active" checked> <span><?php echo esc_html( wpr_t( 'Aktiv' ) ); ?></span></label>
-								<label><input type="checkbox" id="wpr-case-sensitive"> <span><?php echo esc_html( wpr_t( 'Groß-/Kleinschreibung beachten' ) ); ?></span></label>
-								<label><input type="checkbox" id="wpr-whole-word" checked> <span><?php echo esc_html( wpr_t( 'Nur ganze Wörter ersetzen' ) ); ?></span></label>
+								<label for="wpr-is-active"><span><?php echo esc_html( wpr_t( 'Aktiv' ) ); ?></span><span class="wpr-status-toggle"><input type="checkbox" id="wpr-is-active" checked><span></span></span></label>
+								<label for="wpr-case-sensitive"><span><?php echo esc_html( wpr_t( 'Groß-/Kleinschreibung beachten' ) ); ?></span><span class="wpr-status-toggle"><input type="checkbox" id="wpr-case-sensitive"><span></span></span></label>
+								<label for="wpr-whole-word"><span><?php echo esc_html( wpr_t( 'Nur ganze Wörter ersetzen' ) ); ?></span><span class="wpr-status-toggle"><input type="checkbox" id="wpr-whole-word" checked><span></span></span></label>
 							</div>
 
 							<div class="wpr-actions">
@@ -602,7 +602,7 @@ class WPR_Admin {
 
 							<label class="wpr-control" for="wpr-support-message"><span><?php echo esc_html( wpr_t( 'Message' ) ); ?></span><textarea id="wpr-support-message" name="message" rows="8" required placeholder="<?php echo esc_attr( wpr_t( 'What happened? What did you expect? Which steps reproduce the issue?' ) ); ?>"></textarea></label>
 
-							<label class="wpr-switch-row"><input type="checkbox" id="wpr-support-include-diagnostics" name="include_diagnostics" value="1"><span><?php echo esc_html( wpr_t( 'Include diagnostic information' ) ); ?></span></label>
+							<label class="wpr-switch-row" for="wpr-support-include-diagnostics"><span><?php echo esc_html( wpr_t( 'Include diagnostic information' ) ); ?></span><span class="wpr-status-toggle"><input type="checkbox" id="wpr-support-include-diagnostics" name="include_diagnostics" value="1"><span></span></span></label>
 							<input type="text" id="wpr-support-company" name="company" value="" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
 							<p class="description"><?php echo esc_html( wpr_t( 'Only technical system data is included. Word pairs, passwords and secret credentials are never sent.' ) ); ?></p>
 							<p class="description wpr-privacy-support-note"><?php echo esc_html( wpr_t( 'Privacy note: Your support request is sent by email to NickDesignz. A copy is sent to your email address. Diagnostic data is only included if you enable it.' ) ); ?></p>
@@ -1360,7 +1360,7 @@ class WPR_Admin {
 
 	private function render_changelog_html(): string {
 		return '<ul class="wpr-changelog-list">'
-			. '<li><strong>2.3.6</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Expanded the readme with a full feature overview, intended use cases, Elementor/page-builder compatibility notes and a roadmap section. The GitHub README is now bilingual (German/English) with a project banner image.</li><li><strong>2.3.5</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Synced this changelog with the readme.txt changelog and corrected the Security Monitor privacy notice, which still implied external vulnerability data could be sent right now even though those providers are "Coming soon" and never contacted.</li><li><strong>2.3.4</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Fixed a layout bug where the word-pair style editor could visually overlap at common desktop widths, fixed primary action buttons losing their purple styling, fixed the "Dark Luxury" preset preview rendering invisible text, and completed remaining admin strings that were hardcoded in JavaScript and did not follow the plugin language switch.</li><li><strong>2.3.3</strong> <span class="wpr-changelog-date">2026-09-22</span><br>The WPVulnerability, Wordfence, WPScan and Patchstack security-scan providers are not yet connected to any external service. Their toggles and API key fields are now locked as "Coming soon", and the backend no longer accepts or stores values for them.</li><li><strong>2.3.2</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Refined Security Monitor scan result output with compact checklist rows, progressive completion animation and cleaner result cards.</li><li><strong>2.3.1</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Fixed security scan result summaries so passed checks are shown correctly, added dashboard action spacing and refined settings accordion toggle direction and background.</li><li><strong>2.3.0</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Cleaned up admin CSS overrides, unified accordion toggles, preserved refined Settings spacing and removed remaining plain text toggle markers.</li><li><strong>2.2.9</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added detailed scan results with passed, warning and critical groups, made Settings secondary panels collapsible, refined CSS maintenance layout and improved Security Monitor result visibility.</li><li><strong>2.2.8</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Refined Settings layout with unified section headers, merged Custom CSS and CSS Maintenance, preserved ticket history spacing polish and removed the redundant Settings hero banner.</li><li><strong>2.2.7</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Polished support card headers, refined support icons and harmonized ticket, resources and diagnostics panels.</li><li><strong>2.2.5</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Unified support accordion headers, improved System Status and ticket history panels, added support privacy note, refined Security Monitor provider behavior and restored provider states when the monitor is re-enabled.</li><li><strong>2.2.4</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added collapsible System Status, simplified Support resources, preserved refined security UI spacing and fixed dark-mode flash during admin page changes.</li><li><strong>2.2.3</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Improved security scan result visibility, polished the compatibility accordion header and unified Security Monitor switch states.</li><li><strong>2.2.2</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added modern ON/OFF provider switches, manual security scan state, clearer provider messaging and settings save feedback.</li><li><strong>2.2.1</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Fixed Security Monitor settings persistence and made the compatibility/security check collapsible.</li><li><strong>2.2.0</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added Compatibility & Security Check with local update diagnostics, optimization-plugin detection, generated CSS checks, preset database checks and opt-in vulnerability provider settings.</li>'
+			. '<li><strong>2.3.7</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Design consistency: every classic square checkbox in the admin UI is now the same pill toggle switch already used elsewhere in the plugin (word-pair Active switch, Settings toggles).</li><li><strong>2.3.6</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Expanded the readme with a full feature overview, intended use cases, Elementor/page-builder compatibility notes and a roadmap section. The GitHub README is now bilingual (German/English) with a project banner image.</li><li><strong>2.3.5</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Synced this changelog with the readme.txt changelog and corrected the Security Monitor privacy notice, which still implied external vulnerability data could be sent right now even though those providers are "Coming soon" and never contacted.</li><li><strong>2.3.4</strong> <span class="wpr-changelog-date">2026-09-22</span><br>Fixed a layout bug where the word-pair style editor could visually overlap at common desktop widths, fixed primary action buttons losing their purple styling, fixed the "Dark Luxury" preset preview rendering invisible text, and completed remaining admin strings that were hardcoded in JavaScript and did not follow the plugin language switch.</li><li><strong>2.3.3</strong> <span class="wpr-changelog-date">2026-09-22</span><br>The WPVulnerability, Wordfence, WPScan and Patchstack security-scan providers are not yet connected to any external service. Their toggles and API key fields are now locked as "Coming soon", and the backend no longer accepts or stores values for them.</li><li><strong>2.3.2</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Refined Security Monitor scan result output with compact checklist rows, progressive completion animation and cleaner result cards.</li><li><strong>2.3.1</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Fixed security scan result summaries so passed checks are shown correctly, added dashboard action spacing and refined settings accordion toggle direction and background.</li><li><strong>2.3.0</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Cleaned up admin CSS overrides, unified accordion toggles, preserved refined Settings spacing and removed remaining plain text toggle markers.</li><li><strong>2.2.9</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added detailed scan results with passed, warning and critical groups, made Settings secondary panels collapsible, refined CSS maintenance layout and improved Security Monitor result visibility.</li><li><strong>2.2.8</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Refined Settings layout with unified section headers, merged Custom CSS and CSS Maintenance, preserved ticket history spacing polish and removed the redundant Settings hero banner.</li><li><strong>2.2.7</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Polished support card headers, refined support icons and harmonized ticket, resources and diagnostics panels.</li><li><strong>2.2.5</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Unified support accordion headers, improved System Status and ticket history panels, added support privacy note, refined Security Monitor provider behavior and restored provider states when the monitor is re-enabled.</li><li><strong>2.2.4</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added collapsible System Status, simplified Support resources, preserved refined security UI spacing and fixed dark-mode flash during admin page changes.</li><li><strong>2.2.3</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Improved security scan result visibility, polished the compatibility accordion header and unified Security Monitor switch states.</li><li><strong>2.2.2</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added modern ON/OFF provider switches, manual security scan state, clearer provider messaging and settings save feedback.</li><li><strong>2.2.1</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Fixed Security Monitor settings persistence and made the compatibility/security check collapsible.</li><li><strong>2.2.0</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Added Compatibility & Security Check with local update diagnostics, optimization-plugin detection, generated CSS checks, preset database checks and opt-in vulnerability provider settings.</li>'
 			. '<li><strong>2.1.9</strong> <span class="wpr-changelog-date">2026-05-23</span><br>Separated box background gradients from text gradients by rendering gradient text on an inner text layer. Improved text shadow rendering for gradient text so shadows stay behind the visible text layer.</li>'
 			. '<li><strong>2.1.8</strong> <span class="wpr-changelog-date">2026-05-22</span><br>Google Fonts switch now saves instantly via AJAX, matching the language switch behavior while keeping Save settings for custom CSS and future advanced settings.</li>'
 			. '<li><strong>2.1.7</strong> <span class="wpr-changelog-date">2026-05-22</span><br>Moved preset controls into the preview inspector, removed redundant preview copy, polished Google Fonts switch styling and completed preset translations. </li><li><strong>2.1.6</strong> <span class="wpr-changelog-date">2026-05-22</span><br>Added a real preset database, 12 bundled default presets, dashboard preset apply/save controls and secure preset import/export.</li>'
@@ -1518,9 +1518,9 @@ class WPR_Admin {
 
 				<div class="wpr-option-box wpr-bg-gradient-box">
 					<div class="wpr-option-box-head">
-						<label>
-							<input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-bg-gradient-enabled' ); ?>" data-style-field="bg_gradient_enabled" value="1" <?php checked( (string) ( $values['bg_gradient_enabled'] ?? '0' ), '1' ); ?>>
+						<label for="<?php echo esc_attr( 'wpr-' . $scope . '-bg-gradient-enabled' ); ?>">
 							<span><?php echo esc_html( wpr_t( 'Hintergrund-Verlauf' ) ); ?></span>
+							<span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-bg-gradient-enabled' ); ?>" data-style-field="bg_gradient_enabled" value="1" <?php checked( (string) ( $values['bg_gradient_enabled'] ?? '0' ), '1' ); ?>><span></span></span>
 						</label>
 						<small><?php echo esc_html( wpr_t( 'Optional statt einfarbiger Hintergrundfarbe' ) ); ?></small>
 					</div>
@@ -1558,9 +1558,9 @@ class WPR_Admin {
 
 				<div class="wpr-option-box wpr-gradient-box">
 					<div class="wpr-option-box-head">
-						<label>
-							<input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-gradient-enabled' ); ?>" data-style-field="gradient_enabled" value="1" <?php checked( (string) ( $values['gradient_enabled'] ?? '0' ), '1' ); ?>>
+						<label for="<?php echo esc_attr( 'wpr-' . $scope . '-gradient-enabled' ); ?>">
 							<span><?php echo esc_html( wpr_t( 'Text-Verlauf' ) ); ?></span>
+							<span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-gradient-enabled' ); ?>" data-style-field="gradient_enabled" value="1" <?php checked( (string) ( $values['gradient_enabled'] ?? '0' ), '1' ); ?>><span></span></span>
 						</label>
 						<small><?php echo esc_html( wpr_t( 'Optional statt normaler Textfarbe' ) ); ?></small>
 					</div>
@@ -1598,9 +1598,9 @@ class WPR_Admin {
 
 				<div class="wpr-option-box wpr-shadow-box">
 					<div class="wpr-option-box-head">
-						<label>
-							<input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-text-shadow-enabled' ); ?>" data-style-field="text_shadow_enabled" value="1" <?php checked( (string) ( $values['text_shadow_enabled'] ?? '0' ), '1' ); ?>>
+						<label for="<?php echo esc_attr( 'wpr-' . $scope . '-text-shadow-enabled' ); ?>">
 							<span><?php echo esc_html( wpr_t( 'Text Shadow' ) ); ?></span>
+							<span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-text-shadow-enabled' ); ?>" data-style-field="text_shadow_enabled" value="1" <?php checked( (string) ( $values['text_shadow_enabled'] ?? '0' ), '1' ); ?>><span></span></span>
 						</label>
 						<small><?php echo esc_html( wpr_t( 'Optionaler Schatten für mehr Tiefe' ) ); ?></small>
 					</div>
@@ -1666,15 +1666,17 @@ class WPR_Admin {
 						</select>
 					</label>
 				</div>
-					<label class="wpr-switch-row wpr-compact-switch">
-						<input type="checkbox"
-							id="<?php echo esc_attr( 'wpr-' . $scope . '-animation-loop' ); ?>"
-							data-style-field="animation_loop"
-							value="1"
-							<?php checked( (string) ( $values['animation_loop'] ?? '0' ), '1' ); ?>
-						>
-
+					<label class="wpr-switch-row wpr-compact-switch" for="<?php echo esc_attr( 'wpr-' . $scope . '-animation-loop' ); ?>">
 						<span><?php echo esc_html( wpr_t( 'Animation in Schleife abspielen' ) ); ?></span>
+						<span class="wpr-status-toggle">
+							<input type="checkbox"
+								id="<?php echo esc_attr( 'wpr-' . $scope . '-animation-loop' ); ?>"
+								data-style-field="animation_loop"
+								value="1"
+								<?php checked( (string) ( $values['animation_loop'] ?? '0' ), '1' ); ?>
+							>
+							<span></span>
+						</span>
 					</label>
 					<p class="description">
 						<?php echo esc_html( wpr_t( 'Loop wird nur bei dauerhaft geeigneten Effekten wie Pulse, Glow, Shimmer, Wave oder Glitch angewendet.' ) ); ?>
@@ -1723,9 +1725,9 @@ class WPR_Admin {
 			<?php $this->render_editor_panel_end(); ?>
 
 			<?php $this->render_editor_panel_start( '🔗', wpr_t( 'Link & SEO' ), wpr_t( 'Interne Verlinkung, Linkattribute und SEO-Optionen' ), 'linkseo' ); ?>
-				<label class="wpr-switch-row wpr-compact-switch">
-					<input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-enabled' ); ?>" data-style-field="link_enabled" value="1" <?php checked( (string) ( $values['link_enabled'] ?? '0' ), '1' ); ?>>
+				<label class="wpr-switch-row wpr-compact-switch" for="<?php echo esc_attr( 'wpr-' . $scope . '-link-enabled' ); ?>">
 					<span><?php echo esc_html( wpr_t( 'Wortpaar verlinken' ) ); ?></span>
+					<span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-enabled' ); ?>" data-style-field="link_enabled" value="1" <?php checked( (string) ( $values['link_enabled'] ?? '0' ), '1' ); ?>><span></span></span>
 				</label>
 
 				<div class="wpr-control-grid two">
@@ -1761,9 +1763,9 @@ class WPR_Admin {
 				</div>
 
 				<div class="wpr-switch-grid">
-					<label><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-nofollow' ); ?>" data-style-field="link_rel_nofollow" value="1" <?php checked( (string) ( $values['link_rel_nofollow'] ?? '0' ), '1' ); ?>> <span>nofollow</span></label>
-					<label><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-sponsored' ); ?>" data-style-field="link_rel_sponsored" value="1" <?php checked( (string) ( $values['link_rel_sponsored'] ?? '0' ), '1' ); ?>> <span>sponsored</span></label>
-					<label><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-noopener' ); ?>" data-style-field="link_rel_noopener" value="1" <?php checked( (string) ( $values['link_rel_noopener'] ?? '1' ), '1' ); ?>> <span>noopener</span></label>
+					<label for="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-nofollow' ); ?>"><span>nofollow</span><span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-nofollow' ); ?>" data-style-field="link_rel_nofollow" value="1" <?php checked( (string) ( $values['link_rel_nofollow'] ?? '0' ), '1' ); ?>><span></span></span></label>
+					<label for="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-sponsored' ); ?>"><span>sponsored</span><span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-sponsored' ); ?>" data-style-field="link_rel_sponsored" value="1" <?php checked( (string) ( $values['link_rel_sponsored'] ?? '0' ), '1' ); ?>><span></span></span></label>
+					<label for="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-noopener' ); ?>"><span>noopener</span><span class="wpr-status-toggle"><input type="checkbox" id="<?php echo esc_attr( 'wpr-' . $scope . '-link-rel-noopener' ); ?>" data-style-field="link_rel_noopener" value="1" <?php checked( (string) ( $values['link_rel_noopener'] ?? '1' ), '1' ); ?>><span></span></span></label>
 				</div>
 
 				<div class="wpr-control-grid two">

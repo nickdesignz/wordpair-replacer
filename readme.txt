@@ -5,7 +5,7 @@ Tags: text replace, word replace, typography, css effects, animation
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 2.3.6
+Stable tag: 2.3.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,6 +119,9 @@ Not yet. The free version is fully functional. Additional features, along with o
 5. Frontend replacement example.
 
 == Changelog ==
+
+= 2.3.7 =
+* Design consistency: every classic square checkbox in the admin UI (Active, Match case, Replace whole words only, background/text gradient, text shadow, animation loop, link enabled, nofollow/sponsored/noopener, include diagnostic information) is now the same pill toggle switch already used elsewhere in the plugin (e.g. the word-pair Active switch, Settings toggles).
 
 = 2.3.6 =
 * Expanded the readme with a full feature overview, intended use cases, Elementor/page-builder compatibility notes and a roadmap section.

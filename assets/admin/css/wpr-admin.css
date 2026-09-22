@@ -140,17 +140,54 @@
 .wpr-switch-row {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	gap: 8px;
 	font-weight: 600;
 	padding: 10px 12px;
 	border: 1px solid var(--wpr-border);
 	border-radius: 8px;
 	background: var(--wpr-panel);
+	cursor: pointer;
 }
 
 .wpr-switch-grid input,
 .wpr-switch-row input {
 	accent-color: var(--wpr-accent);
+}
+
+/*
+ * All plain checkboxes across the plugin share one visual: the classic
+ * square checkbox is replaced by the same pill switch used for the
+ * word-pair "Active" toggle (.wpr-status-toggle), nested as a small
+ * wrapper span around the existing <input>. See wpr-status-toggle above
+ * for the actual track/knob styling — this block only sizes it down for
+ * inline use inside label rows.
+ */
+.wpr-option-box-head label,
+.wpr-switch-grid label,
+.wpr-switch-row {
+	position: relative;
+}
+
+.wpr-option-box-head label .wpr-status-toggle,
+.wpr-switch-grid label .wpr-status-toggle,
+.wpr-switch-row .wpr-status-toggle {
+	flex-shrink: 0;
+	width: 40px;
+	height: 22px;
+}
+
+.wpr-option-box-head label .wpr-status-toggle span:before,
+.wpr-switch-grid label .wpr-status-toggle span:before,
+.wpr-switch-row .wpr-status-toggle span:before {
+	width: 16px;
+	height: 16px;
+}
+
+.wpr-option-box-head label .wpr-status-toggle input:checked + span:before,
+.wpr-switch-grid label .wpr-status-toggle input:checked + span:before,
+.wpr-switch-row .wpr-status-toggle input:checked + span:before {
+	transform: translateX(18px);
 }
 
 .wpr-panel {
