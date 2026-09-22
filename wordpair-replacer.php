@@ -3,7 +3,7 @@
  * Plugin Name:       WordPair Replacer
  * Plugin URI:        https://nickdesignz.de/wordpair-replacer/
  * Description:       Replace words or phrases dynamically in the frontend and style replacements globally or individually with generated CSS.
- * Version:           2.3.4
+ * Version:           2.3.5
  * Requires at least: 6.0
  * Tested up to:      6.9
  * Requires PHP:      8.0
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPR_VERSION', '2.3.4' );
+define( 'WPR_VERSION', '2.3.5' );
 define( 'WPR_PLUGIN_FILE', __FILE__ );
 define( 'WPR_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

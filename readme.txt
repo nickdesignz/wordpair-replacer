@@ -5,7 +5,7 @@ Tags: text replace, word replace, typography, css effects, animation
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,10 @@ Google Fonts are disabled by default. They are only loaded when explicitly enabl
 5. Frontend replacement example.
 
 == Changelog ==
+
+= 2.3.5 =
+* Content accuracy: the in-admin Changelog page had not been updated since 2.3.2 even though the plugin was already on a newer version. Added the missing 2.3.3/2.3.4 entries so the admin changelog and readme.txt changelog stay in sync.
+* Corrected the Security Monitor privacy notice, which still implied external vulnerability data could be sent right now; the WPVulnerability/Wordfence/WPScan/Patchstack providers are "Coming soon" and never contacted, so the notice now says so explicitly.
 
 = 2.3.4 =
 * Fixed a layout bug where the word-pair style editor's tab rail, form fields and live preview could visually overlap and become unreadable at common desktop widths (up to ~1920px), caused by responsive rules whose selectors no longer matched after an earlier layout refactor. The tab rail now compacts to icons and the live preview stacks below the form on narrower windows.
