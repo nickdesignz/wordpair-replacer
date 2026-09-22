@@ -2,6 +2,13 @@
 
 WordPress plugin to replace words or phrases dynamically in the frontend and style replacements globally or individually with generated CSS.
 
+## Download & Installation
+
+- **[Download latest build (main branch)](https://github.com/nickdesignz/wordpair-replacer/releases/download/latest/wordpair-replacer.zip)** — always up to date with the `main` branch.
+- **[All releases](https://github.com/nickdesignz/wordpair-replacer/releases)** — stable, versioned downloads.
+
+To install: in WordPress, go to **Plugins → Add New → Upload Plugin**, select the downloaded `.zip` file and click **Install Now**, then **Activate**.
+
 ## Description
 
 WordPair Replacer allows site administrators to define word or phrase pairs and automatically replace matching frontend text output. Replacements can use a global styling configuration or individual styling per word pair.

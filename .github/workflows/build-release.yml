@@ -1,0 +1,57 @@
+name: Build and Release Plugin ZIP
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read plugin version
+        id: version
+        run: |
+          VERSION=$(grep -m1 "^ \* Version:" wordpair-replacer.php | sed -E 's/.*Version:\s*([0-9.]+).*/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build plugin ZIP
+        run: |
+          mkdir -p build/wordpair-replacer
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='build' \
+            --exclude='*.zip' \
+            ./ build/wordpair-replacer/
+          cd build
+          zip -r "../wordpair-replacer.zip" wordpair-replacer
+          cd ..
+          cp wordpair-replacer.zip "wordpair-replacer-${{ steps.version.outputs.version }}.zip"
+
+      - name: Update rolling "latest" release (main branch)
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "Latest build (v${{ steps.version.outputs.version }})"
+          prerelease: true
+          body: |
+            Automatically built from the latest commit on `main` (${{ github.sha }}).
+            Plugin version: ${{ steps.version.outputs.version }}
+
+            For a stable, tagged version see the [Releases page](../../releases).
+          files: wordpair-replacer.zip
+
+      - name: Create versioned release (version tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: wordpair-replacer-${{ steps.version.outputs.version }}.zip
