@@ -5,7 +5,7 @@ Tags: text replace, word replace, typography, css effects, animation
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 2.3.5
+Stable tag: 2.3.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,28 +13,64 @@ Replace words or phrases dynamically in the frontend and style replacements glob
 
 == Description ==
 
-WordPair Replacer allows site administrators to define word or phrase pairs and automatically replace matching frontend text output. Replacements can use a global styling configuration or individual styling per word pair.
+WordPair Replacer allows site administrators to define word or phrase pairs and automatically replace matching frontend text output — without editing every post or page by hand. Replacements can use a global styling configuration or individual styling per word pair: typography, colors, gradients, borders, spacing and 25+ modern text effects and animations.
 
-The plugin is designed for content highlighting, typography enhancements, visual emphasis, landing pages, marketing text and lightweight frontend text adjustments without manually editing every post or page.
+Typical use cases: consistently highlighting or linking recurring keywords, brand names or product names across a site; visually enhancing landing pages and marketing copy without touching page content; automating internal SEO linking for specific terms; and lightweight, performant frontend text adjustments without shortcodes or theme edits.
 
-Frontend CSS is generated as a separate file in the uploads directory. Google Fonts are disabled by default and are only loaded when explicitly enabled in the plugin settings.
+Frontend CSS is generated as a separate file in the uploads directory instead of inline styles, for better performance. Google Fonts are disabled by default and are only loaded when explicitly enabled in the plugin settings.
 
 = Main features =
 
-* Add, edit, activate, deactivate and delete word pairs.
-* Replace words and phrases automatically in frontend content.
+**Word replacement**
+
+* Add, edit, activate, deactivate and delete an unlimited number of word or phrase pairs.
+* Automatic replacement across the entire frontend output — posts, pages, widgets, theme output.
 * Optional case-sensitive replacement.
 * Optional whole-word-only replacement.
-* Global styling for all replaced words.
-* Individual styling for each saved word pair.
-* Generated frontend CSS file.
-* Modern text effects and animations.
+* Script, style, code, pre, SVG and textarea blocks are automatically skipped; specific areas can also be excluded via a `data-wpr-ignore` attribute or `wpr-ignore` CSS class.
+
+**Styling & design**
+
+* Global styling for all replaced words, plus individual per-word-pair styling that overrides the global style.
+* Typography: font family (system fonts or optional Google Fonts), size, weight, line height, style, decoration, text transform, letter/word spacing, line wrapping.
+* Colors: text color, background color, text gradient, background gradient (linear/radial, with angle/position), text shadow/glow.
+* Border width (per side), style, color and radius (per corner); padding per side.
+* Live preview directly in the admin, with a light/dark preview mode.
 * WordPress color picker integration.
-* Optional Google Fonts integration.
-* Google Fonts are disabled by default.
-* Backend language switcher for English and German.
-* AJAX-based backend interface.
-* Custom CSS field for advanced styling.
+
+**Effects & animations**
+
+* 25+ text effects: fade in, slide in (4 directions), zoom, bounce, pulse, shake, blur in, typing effect, glitch, neon glow, text shadow glow, gradient text, gradient animation, shimmer, stroke text, 3D text, hover highlight, reveal variants and more.
+* Configurable animation duration, delay, infinite loop (for suitable effects) and easing curve.
+
+**Link & SEO**
+
+* Automatically link the replaced word to an internal page/post (built-in search) or a free-form URL.
+* Target, rel attributes (nofollow, sponsored, noopener), title, ARIA label, custom link color and hover color.
+* Automatic CSS class per word pair, plus an optional custom CSS class/ID and scoped custom CSS per word pair, and an additional global custom CSS field.
+
+**Presets & import/export**
+
+* 12 built-in visual presets as a starting point; save your own presets and apply them from the preset library.
+* Export/import presets in the `.wprpreset` format to share styles between websites.
+* Export all word pairs as JSON and import them on another site.
+
+**Admin experience**
+
+* Bilingual admin interface (English/German), switchable independently of the WordPress site language.
+* Light/dark admin theme, AJAX-based interface with no page reloads.
+* Built-in support ticket system (email delivery, local history, rate limiting, spam protection).
+* Local compatibility check for outdated WordPress core/plugin/theme versions and common optimization plugins (no external data transmission).
+
+= Compatibility =
+
+Tested and confirmed working with Elementor, and tested and confirmed working without Elementor (classic editor / Gutenberg) — replacement operates on the rendered frontend output and is not tied to a specific page builder. Other page builders (e.g. Divi, Beaver Builder, Bricks, Oxygen) have not been tested yet; compatibility is likely given the plugin's approach, but not yet verified.
+
+= Roadmap =
+
+* External vulnerability checks: integration with WPVulnerability, Wordfence Intelligence, WPScan and Patchstack for optional external security scans. Currently marked "Coming soon" in the UI — no data is sent to these providers yet.
+* Premium features: the free version is fully functional; additional features may follow as a premium extension later.
+* Verified compatibility with more page builders beyond Elementor.
 
 = Privacy =
 
@@ -66,6 +102,14 @@ Yes. Each saved word pair can use individual styling that overrides the global s
 
 Google Fonts are disabled by default. They are only loaded when explicitly enabled in the plugin settings.
 
+= Does WordPair Replacer work with Elementor? =
+
+Yes. It has been tested and confirmed working with Elementor. It has also been tested and confirmed working without Elementor (classic editor / Gutenberg), since replacement happens on the rendered frontend output rather than inside a specific builder. Other page builders have not been tested yet.
+
+= Is there a premium version? =
+
+Not yet. The free version is fully functional. Additional features, along with optional external vulnerability-scan provider integrations (currently marked "Coming soon" in the Security Monitor settings), may be added as a premium extension in the future.
+
 == Screenshots ==
 
 1. Word pair management screen.
@@ -75,6 +119,10 @@ Google Fonts are disabled by default. They are only loaded when explicitly enabl
 5. Frontend replacement example.
 
 == Changelog ==
+
+= 2.3.6 =
+* Expanded the readme with a full feature overview, intended use cases, Elementor/page-builder compatibility notes and a roadmap section.
+* The GitHub-facing README.md is now bilingual (German/English) with a project banner image.
 
 = 2.3.5 =
 * Content accuracy: the in-admin Changelog page had not been updated since 2.3.2 even though the plugin was already on a newer version. Added the missing 2.3.3/2.3.4 entries so the admin changelog and readme.txt changelog stay in sync.
