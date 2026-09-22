@@ -750,18 +750,18 @@
 			const html = [
 				'<article class="wpr-pair-card wpr-pair-list-item" data-id="' + esc(item.id) + '" data-status="' + (active ? 'active' : 'inactive') + '" data-search="' + esc((item.original_word || '') + ' ' + (item.replacement_word || '')) + '">',
 					'<div class="wpr-pair-main">',
-						'<button type="button" class="wpr-pair-select wpr-open-style" data-id="' + esc(item.id) + '" title="Styling bearbeiten">',
+						'<button type="button" class="wpr-pair-select wpr-open-style" data-id="' + esc(item.id) + '" title="' + esc(wprAdmin.i18n.editStyling) + '">',
 							'<span class="wpr-pair-state ' + (active ? 'is-active' : '') + '"></span>',
 							'<span class="wpr-pair-words"><strong>' + esc(title) + '</strong></span>',
 							(effect ? '<span class="wpr-pair-effect-chip">' + esc(effect) + '</span>' : ''),
 						'</button>',
 						'<div class="wpr-pair-meta">',
-							'<label class="wpr-status-toggle" title="' + (active ? 'Aktiv' : 'Inaktiv') + '">',
+							'<label class="wpr-status-toggle" title="' + esc(active ? wprAdmin.i18n.active : wprAdmin.i18n.inactive) + '">',
 								'<input type="checkbox" class="wpr-toggle-active" ' + (active ? 'checked' : '') + '>',
 								'<span></span>',
 							'</label>',
-							'<button type="button" class="button wpr-favorite" data-id="' + esc(item.id) + '" title="Favorit">☆</button>',
-							'<button type="button" class="button button-link-delete wpr-delete" data-id="' + esc(item.id) + '" title="Löschen">×</button>',
+							'<button type="button" class="button wpr-favorite" data-id="' + esc(item.id) + '" title="' + esc(wprAdmin.i18n.favorite) + '">☆</button>',
+							'<button type="button" class="button button-link-delete wpr-delete" data-id="' + esc(item.id) + '" title="' + esc(wprAdmin.i18n.deleteLabel) + '">×</button>',
 						'</div>',
 					'</div>',
 				'</article>'
@@ -892,11 +892,11 @@
 		const inactive = $items.filter('[data-status="inactive"]').length;
 		let fav = 0;
 		$items.each(function () { if (favorites.includes(String($(this).data('id')))) { fav++; } });
-		$('.wpr-browser-filter[data-filter="all"]').text('Alle (' + total + ')');
-		$('.wpr-browser-filter[data-filter="active"]').text('Aktiv (' + active + ')');
-		$('.wpr-browser-filter[data-filter="inactive"]').text('Inaktiv (' + inactive + ')');
-		$('.wpr-browser-filter[data-filter="favorites"]').text('Favoriten (' + fav + ')');
-		$('#wpr-pair-total-count').text(total + ' Einträge');
+		$('.wpr-browser-filter[data-filter="all"]').text(wprAdmin.i18n.filterAll + ' (' + total + ')');
+		$('.wpr-browser-filter[data-filter="active"]').text(wprAdmin.i18n.active + ' (' + active + ')');
+		$('.wpr-browser-filter[data-filter="inactive"]').text(wprAdmin.i18n.inactive + ' (' + inactive + ')');
+		$('.wpr-browser-filter[data-filter="favorites"]').text(wprAdmin.i18n.favorites + ' (' + fav + ')');
+		$('#wpr-pair-total-count').text(total + ' ' + wprAdmin.i18n.entriesSuffix);
 	}
 
 
@@ -941,12 +941,17 @@
 	}
 
 	function renderPresetPreviewStyle(style) {
+		// The `color` declarations below use !important because a global
+		// `.wpr-wrap strong { color: var(--wpr-text) !important; }` utility
+		// rule would otherwise always win over this per-preset inline color,
+		// since a plain (non-!important) inline style can never beat an
+		// !important rule from the stylesheet.
 		let css = '';
-		if (style.color) { css += 'color:' + style.color + ';'; }
+		if (style.color) { css += 'color:' + style.color + ' !important;'; }
 		if (style.background_color) { css += 'background-color:' + style.background_color + ';'; }
 		if (String(style.gradient_enabled) === '1') {
 			const a = style.gradient_angle || '90';
-			css += 'background-image:linear-gradient(' + a + 'deg,' + (style.gradient_color_1 || '#24afab') + ',' + (style.gradient_color_2 || '#6c5ce7') + ');-webkit-background-clip:text;background-clip:text;color:transparent;';
+			css += 'background-image:linear-gradient(' + a + 'deg,' + (style.gradient_color_1 || '#24afab') + ',' + (style.gradient_color_2 || '#6c5ce7') + ');-webkit-background-clip:text;background-clip:text;color:transparent !important;';
 		}
 		if (String(style.bg_gradient_enabled) === '1') {
 			const a = style.bg_gradient_angle || '90';
@@ -980,8 +985,8 @@
 					'<p>' + esc(preset.description || '') + '</p>',
 					'<div class="wpr-preset-badges">' + badges + '</div>',
 					'<div class="wpr-preset-card-actions">',
-						'<button type="button" class="button wpr-export-preset" data-id="' + esc(preset.id) + '">Export</button>',
-						(preset.readonly ? '' : '<button type="button" class="button button-link-delete wpr-delete-preset" data-id="' + esc(preset.id) + '">Delete</button>'),
+						'<button type="button" class="button wpr-export-preset" data-id="' + esc(preset.id) + '">' + esc(wprAdmin.i18n.exportLabel) + '</button>',
+						(preset.readonly ? '' : '<button type="button" class="button button-link-delete wpr-delete-preset" data-id="' + esc(preset.id) + '">' + esc(wprAdmin.i18n.deleteLabel) + '</button>'),
 					'</div>',
 				'</article>'
 			].join('');
@@ -1207,9 +1212,9 @@
 					'<h3>' + esc(item.original_word || 'Keyword') + ' <span>→</span> <em>' + esc(item.replacement_word || 'Replacement') + '</em></h3><small class="wpr-last-updated">' + esc(item.updated_at ? (i18n.lastChange + ' ' + item.updated_at) : i18n.neverSaved) + '</small>',
 				'</div>',
 				'<div class="wpr-dock-actions">',
-					'<button type="button" class="button wpr-duplicate-pair" data-id="' + esc(itemId) + '">Duplizieren</button>',
-					'<button type="button" class="button wpr-export-pair" data-id="' + esc(itemId) + '">Exportieren</button>',
-					'<button type="button" class="button wpr-edit" data-id="' + esc(itemId) + '">Wort bearbeiten</button>',
+					'<button type="button" class="button wpr-duplicate-pair" data-id="' + esc(itemId) + '">' + esc(wprAdmin.i18n.duplicateLabel) + '</button>',
+					'<button type="button" class="button wpr-export-pair" data-id="' + esc(itemId) + '">' + esc(wprAdmin.i18n.exportLabel) + '</button>',
+					'<button type="button" class="button wpr-edit" data-id="' + esc(itemId) + '">' + esc(wprAdmin.i18n.editWord) + '</button>',
 					'<button type="button" class="button button-primary wpr-primary wpr-save-style" data-id="' + esc(itemId) + '">' + esc(i18n.saveStyle) + '</button>',
 				'</div>',
 			'</div>',
@@ -1792,7 +1797,7 @@
 		event.preventDefault();
 		const raw = String($('#wpr-import-json').val() || '').trim();
 		if (!raw) {
-			showMessage('Keine Importdaten gefunden.', 'error');
+			showMessage(wprAdmin.i18n.importNoData, 'error');
 			return;
 		}
 
@@ -1800,7 +1805,7 @@
 		try {
 			payload = JSON.parse(raw);
 		} catch (e) {
-			showMessage('JSON konnte nicht gelesen werden.', 'error');
+			showMessage(wprAdmin.i18n.importInvalidJson, 'error');
 			return;
 		}
 
@@ -1859,7 +1864,7 @@
 					showMessage(response.data && response.data.message ? response.data.message : wprAdmin.i18n.error, 'error');
 					return;
 				}
-				showMessage('Wortpaar dupliziert.');
+				showMessage(wprAdmin.i18n.pairDuplicated);
 				loadPairs();
 			})
 			.fail(function () { showMessage(wprAdmin.i18n.error, 'error'); });
@@ -2275,7 +2280,7 @@
 	$(document).on('click', '.wpr-delete-preset', function (event) {
 		event.preventDefault();
 		const id = $(this).data('id');
-		if (!window.confirm('Delete this preset?')) {
+		if (!window.confirm(wprAdmin.i18n.confirmDeletePreset)) {
 			return;
 		}
 		request('wpr_delete_preset', { id: id })

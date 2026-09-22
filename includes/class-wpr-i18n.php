@@ -254,6 +254,7 @@ class WPR_I18n {
 			'X in px' => 'X in px',
 			'Y in px' => 'Y in px',
 			'Your Tickets' => 'Deine Tickets',
+			'Delete this preset?' => 'Dieses Preset wirklich löschen?',
 		);
 	}
 
@@ -547,6 +548,15 @@ class WPR_I18n {
 			'Hell' => 'Light',
 			'Hinweis schließen' => 'Close notice',
 			'Inaktiv' => 'Inactive',
+			'Duplizieren' => 'Duplicate',
+			'Einträge' => 'entries',
+			'Exportieren' => 'Export',
+			'Favorit' => 'Favorite',
+			'JSON konnte nicht gelesen werden.' => 'Could not read JSON.',
+			'Keine Importdaten gefunden.' => 'No import data found.',
+			'Styling bearbeiten' => 'Edit styling',
+			'Wort bearbeiten' => 'Edit word',
+			'Wortpaar dupliziert.' => 'Word pair duplicated.',
 			'Klicke links auf Styling, um Typografie, Farben, Effekte, Abstände und Rahmen hier zentral zu bearbeiten.' => 'Click Styling on the left to edit typography, colors, effects, spacing and border here centrally.',
 			'Leeren' => 'Clear',
 			'Letzte Änderung:' => 'Last change:',

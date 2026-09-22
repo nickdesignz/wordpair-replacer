@@ -2784,14 +2784,6 @@ body.wpr-admin-dark .wpr-pair-card.wpr-pair-list-item {
 	padding: 0 !important;
 }
 
-.wpr-dock-body > .wpr-style-editor {
-	display: grid !important;
-	grid-template-columns: 230px minmax(0, 1fr) !important;
-	align-items: start !important;
-	gap: 0 !important;
-	min-height: 640px !important;
-}
-
 .wpr-dock-body .wpr-editor-panel {
 	display: contents !important;
 }
@@ -3324,9 +3316,9 @@ body:not(.wpr-admin-dark) .wpr-preview-theme {
 	box-shadow: none !important;
 }
 
-body:not(.wpr-admin-dark) .wpr-pair-meta .button:hover,
-body:not(.wpr-admin-dark) .wpr-dock-actions .button:hover,
-body:not(.wpr-admin-dark) .wpr-actions .button:hover,
+body:not(.wpr-admin-dark) .wpr-pair-meta .button:not(.wpr-primary):not(.button-primary):hover,
+body:not(.wpr-admin-dark) .wpr-dock-actions .button:not(.wpr-save-style):not(.wpr-primary):not(.button-primary):hover,
+body:not(.wpr-admin-dark) .wpr-actions .button:not(.wpr-save-style):not(.wpr-primary):not(.button-primary):hover,
 body:not(.wpr-admin-dark) #wpr-regenerate-css:hover,
 body:not(.wpr-admin-dark) #wpr-preview-replay:hover,
 body:not(.wpr-admin-dark) .wpr-preview-theme:hover {
@@ -4474,9 +4466,9 @@ body.wpr-admin-dark .wpr-language-options label {
 	background: #0e1627 !important;
 }
 
-body.wpr-admin-light .wpr-pair-meta .button,
-body.wpr-admin-light .wpr-dock-actions .button:not(.wpr-save-style),
-body.wpr-admin-light .wpr-actions .button:not(.wpr-save-style),
+body.wpr-admin-light .wpr-pair-meta .button:not(.wpr-primary):not(.button-primary),
+body.wpr-admin-light .wpr-dock-actions .button:not(.wpr-save-style):not(.wpr-primary):not(.button-primary),
+body.wpr-admin-light .wpr-actions .button:not(.wpr-save-style):not(.wpr-primary):not(.button-primary),
 body.wpr-admin-light #wpr-regenerate-css,
 body.wpr-admin-light #wpr-preview-replay,
 body.wpr-admin-light .wpr-preview-theme {
@@ -7508,4 +7500,97 @@ html.wpr-admin-dark body .wpr-wrap .wpr-security-result-group {
 
 @keyframes wpr-scan-spinner-out {
 	to { opacity: 0; }
+}
+
+/* ==========================================================================
+   Responsive fix: word-pair style editor overlap.
+
+   The editor dock nests three fixed-width columns (up to 550px word-pair
+   list + 245px vertical tab rail + 380px live-preview panel). Below about
+   2100px of viewport width this leaves 0px (or less) for the actual form
+   content, which then overflows and visually overlaps the tabs and the
+   preview instead of wrapping. The older @media rules meant to handle this
+   target `.wpr-dock-body > .wpr-style-editor`, a selector that no longer
+   matches the DOM after the `.wpr-dock-controls` / `.wpr-dock-editor-grid`
+   wrapper was introduced for the live-preview panel, so they silently never
+   apply. These rules use the current selectors and are placed last in the
+   file so they reliably win over the earlier (still !important) rules.
+   ========================================================================== */
+
+@media (max-width: 2100px) {
+	.wpr-dock-editor-grid {
+		grid-template-columns: minmax(0, 1fr) !important;
+	}
+
+	.wpr-dock-preview-panel {
+		position: static !important;
+		border-left: 0 !important;
+		padding-left: 0 !important;
+		border-top: 1px solid var(--wpr-border) !important;
+		padding-top: 24px !important;
+		margin-top: 8px !important;
+	}
+}
+
+@media (max-width: 1700px) {
+	.wpr-dock-controls > .wpr-style-editor {
+		grid-template-columns: 64px minmax(0, 1fr) !important;
+	}
+
+	.wpr-dock-controls > .wpr-style-editor > .wpr-vertical-tabs > .wpr-vertical-tab {
+		grid-template-columns: 1fr !important;
+		justify-items: center !important;
+		padding: 9px !important;
+	}
+
+	.wpr-dock-controls > .wpr-style-editor > .wpr-vertical-tabs > .wpr-vertical-tab > strong,
+	.wpr-dock-controls > .wpr-style-editor > .wpr-vertical-tabs > .wpr-vertical-tab > i {
+		display: none !important;
+	}
+}
+
+/* ==========================================================================
+   Fix: primary action buttons (e.g. "Save word pair", "Send ticket") lost
+   their purple .wpr-primary styling.
+
+   Several generations of `.wpr-actions .button` / `.wpr-dock-actions .button`
+   / `.wpr-pair-meta .button` "reset to plain button" rules accumulated in
+   this file (light mode, dark-mode-exclusion, hover state, ...). Some were
+   later patched with a `:not(.wpr-save-style)` escape hatch for the one
+   button that needed it, but every other `.button.wpr-primary` inside one
+   of those containers is still caught by at least one of the remaining,
+   unpatched duplicates. Rather than patching every historical duplicate
+   individually, this rule targets `.button` combined with `.wpr-primary` /
+   `.button-primary`, which is more specific (2 classes on the element
+   instead of 1) than any of the `.wpr-actions .button` resets above and so
+   wins on specificity alone, regardless of source order.
+   ========================================================================== */
+.wpr-actions .button.wpr-primary,
+.wpr-actions .button.button-primary,
+.wpr-dock-actions .button.wpr-primary,
+.wpr-dock-actions .button.button-primary,
+.wpr-pair-meta .button.wpr-primary,
+.wpr-pair-meta .button.button-primary,
+.wpr-admin-light .wpr-actions .button.wpr-primary,
+.wpr-admin-light .wpr-actions .button.button-primary,
+.wpr-admin-light .wpr-dock-actions .button.wpr-primary,
+.wpr-admin-light .wpr-dock-actions .button.button-primary,
+.wpr-admin-light .wpr-pair-meta .button.wpr-primary,
+.wpr-admin-light .wpr-pair-meta .button.button-primary,
+body.wpr-admin-light .wpr-actions .button.wpr-primary,
+body.wpr-admin-light .wpr-actions .button.button-primary,
+body.wpr-admin-light .wpr-dock-actions .button.wpr-primary,
+body.wpr-admin-light .wpr-dock-actions .button.button-primary,
+body.wpr-admin-light .wpr-pair-meta .button.wpr-primary,
+body.wpr-admin-light .wpr-pair-meta .button.button-primary,
+body:not(.wpr-admin-dark) .wpr-actions .button.wpr-primary,
+body:not(.wpr-admin-dark) .wpr-actions .button.button-primary,
+body:not(.wpr-admin-dark) .wpr-dock-actions .button.wpr-primary,
+body:not(.wpr-admin-dark) .wpr-dock-actions .button.button-primary,
+body:not(.wpr-admin-dark) .wpr-pair-meta .button.wpr-primary,
+body:not(.wpr-admin-dark) .wpr-pair-meta .button.button-primary {
+	background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+	border-color: rgba(139, 92, 246, .55) !important;
+	color: #fff !important;
+	box-shadow: none !important;
 }

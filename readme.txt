@@ -5,7 +5,7 @@ Tags: text replace, word replace, typography, css effects, animation
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,12 @@ Google Fonts are disabled by default. They are only loaded when explicitly enabl
 5. Frontend replacement example.
 
 == Changelog ==
+
+= 2.3.4 =
+* Fixed a layout bug where the word-pair style editor's tab rail, form fields and live preview could visually overlap and become unreadable at common desktop widths (up to ~1920px), caused by responsive rules whose selectors no longer matched after an earlier layout refactor. The tab rail now compacts to icons and the live preview stacks below the form on narrower windows.
+* Fixed "Save word pair" and "Send ticket" (and other primary action buttons) losing their purple styling due to conflicting CSS resets accumulated across several plugin versions.
+* Fixed the "Dark Luxury" preset preview swatch rendering invisible (dark-on-dark) text.
+* Completed remaining German/English admin UI strings that were hardcoded in JavaScript and did not follow the plugin language switch (word-pair filter counts, editor action buttons, import/duplicate messages).
 
 = 2.3.3 =
 * Security hardening: the WPVulnerability, Wordfence, Patchstack and WPScan security-scan providers are not yet connected to any external service. Their toggles and API key fields are now locked as "Coming soon" in the UI, and the backend no longer accepts or stores values for them, so no unused API key can end up in the database. Existing installs are cleaned up automatically on upgrade.
