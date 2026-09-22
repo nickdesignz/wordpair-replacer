@@ -16,6 +16,7 @@ class WPR_Activator {
 		self::create_default_settings();
 		self::migrate_legacy_rows();
 		self::seed_default_presets();
+		self::purge_unconnected_security_provider_settings();
 
 		update_option( 'wpr_version', WPR_VERSION, false );
 	}
@@ -31,7 +32,51 @@ class WPR_Activator {
 		self::create_default_settings();
 		self::seed_default_presets();
 		self::migrate_legacy_rows();
+		self::purge_unconnected_security_provider_settings();
 		update_option( 'wpr_version', WPR_VERSION, false );
+	}
+
+	/**
+	 * The WPVulnerability, Wordfence, WPScan and Patchstack security-scan
+	 * providers are "coming soon" placeholders with no outbound request
+	 * implemented. Older versions still let admins toggle them on and store a
+	 * real API token/key that was never used. Clear those out on upgrade so no
+	 * unused secret lingers in the database.
+	 */
+	private static function purge_unconnected_security_provider_settings(): void {
+		if ( ! class_exists( 'WPR_Settings' ) ) {
+			return;
+		}
+
+		$settings = get_option( WPR_Settings::OPTION_KEY, false );
+
+		if ( ! is_array( $settings ) ) {
+			return;
+		}
+
+		$stale_keys = array(
+			'security_wpvulnerability_enabled',
+			'security_wordfence_enabled',
+			'security_wpscan_enabled',
+			'security_patchstack_enabled',
+			'security_wpscan_api_token',
+			'security_patchstack_api_key',
+		);
+
+		$changed = false;
+
+		foreach ( $stale_keys as $key ) {
+			$empty_value = str_ends_with( $key, '_enabled' ) ? 0 : '';
+
+			if ( array_key_exists( $key, $settings ) && $settings[ $key ] !== $empty_value ) {
+				$settings[ $key ] = $empty_value;
+				$changed          = true;
+			}
+		}
+
+		if ( $changed ) {
+			update_option( WPR_Settings::OPTION_KEY, $settings, false );
+		}
 	}
 
 	public static function table_name(): string {

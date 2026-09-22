@@ -734,35 +734,43 @@ class WPR_Admin {
 							</div>
 							<p><?php echo esc_html( wpr_t( 'Always enabled. Uses WordPress update data to detect outdated core, plugins and themes without sending data to additional services.' ) ); ?></p>
 						</div>
-						<div class="wpr-security-provider">
+						<div class="wpr-security-provider is-coming-soon">
 							<div class="wpr-provider-head">
 								<strong>WPVulnerability</strong>
-								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-wpvulnerability-enabled" <?php checked( (int) ( $settings['security_wpvulnerability_enabled'] ?? 0 ), 1 ); ?>><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
+								<span class="wpr-badge-soon"><?php echo esc_html( wpr_t( 'Coming soon' ) ); ?></span>
+								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-wpvulnerability-enabled" disabled><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
 							</div>
 							<p><?php echo esc_html( wpr_t( 'Open vulnerability database for WordPress components. Usually no API key required. Enable only if this fits your privacy policy.' ) ); ?></p>
+							<p class="description"><?php echo esc_html( wpr_t( 'This provider is planned but not connected yet. No data is sent and no key is stored.' ) ); ?></p>
 						</div>
-						<div class="wpr-security-provider">
+						<div class="wpr-security-provider is-coming-soon">
 							<div class="wpr-provider-head">
 								<strong>Wordfence Intelligence</strong>
-								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-wordfence-enabled" <?php checked( (int) ( $settings['security_wordfence_enabled'] ?? 0 ), 1 ); ?>><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
+								<span class="wpr-badge-soon"><?php echo esc_html( wpr_t( 'Coming soon' ) ); ?></span>
+								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-wordfence-enabled" disabled><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
 							</div>
 							<p><?php echo esc_html( wpr_t( 'Free vulnerability data feed from Wordfence. Review the provider terms before enabling it.' ) ); ?></p>
+							<p class="description"><?php echo esc_html( wpr_t( 'This provider is planned but not connected yet. No data is sent and no key is stored.' ) ); ?></p>
 						</div>
-						<div class="wpr-security-provider">
+						<div class="wpr-security-provider is-coming-soon">
 							<div class="wpr-provider-head">
 								<strong>WPScan</strong>
-								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-wpscan-enabled" <?php checked( (int) ( $settings['security_wpscan_enabled'] ?? 0 ), 1 ); ?>><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
+								<span class="wpr-badge-soon"><?php echo esc_html( wpr_t( 'Coming soon' ) ); ?></span>
+								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-wpscan-enabled" disabled><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
 							</div>
 							<p><?php echo esc_html( wpr_t( 'Requires your own WPScan API token from your WPScan account.' ) ); ?></p>
-							<input type="password" id="wpr-security-wpscan-api-token" value="<?php echo esc_attr( (string) ( $settings['security_wpscan_api_token'] ?? '' ) ); ?>" autocomplete="off" placeholder="WPScan API Token">
+							<input type="password" id="wpr-security-wpscan-api-token" value="" autocomplete="off" placeholder="WPScan API Token" disabled>
+							<p class="description"><?php echo esc_html( wpr_t( 'This provider is planned but not connected yet. No data is sent and no key is stored.' ) ); ?></p>
 						</div>
-						<div class="wpr-security-provider">
+						<div class="wpr-security-provider is-coming-soon">
 							<div class="wpr-provider-head">
 								<strong>Patchstack</strong>
-								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-patchstack-enabled" <?php checked( (int) ( $settings['security_patchstack_enabled'] ?? 0 ), 1 ); ?>><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
+								<span class="wpr-badge-soon"><?php echo esc_html( wpr_t( 'Coming soon' ) ); ?></span>
+								<label class="wpr-binary-switch"><span><?php echo esc_html( wpr_t( 'Off' ) ); ?></span><input type="checkbox" id="wpr-security-patchstack-enabled" disabled><i aria-hidden="true"></i><span><?php echo esc_html( wpr_t( 'On' ) ); ?></span></label>
 							</div>
 							<p><?php echo esc_html( wpr_t( 'Requires your own Patchstack API key. Availability depends on your Patchstack plan and API access.' ) ); ?></p>
-							<input type="password" id="wpr-security-patchstack-api-key" value="<?php echo esc_attr( (string) ( $settings['security_patchstack_api_key'] ?? '' ) ); ?>" autocomplete="off" placeholder="Patchstack API Key">
+							<input type="password" id="wpr-security-patchstack-api-key" value="" autocomplete="off" placeholder="Patchstack API Key" disabled>
+							<p class="description"><?php echo esc_html( wpr_t( 'This provider is planned but not connected yet. No data is sent and no key is stored.' ) ); ?></p>
 						</div>
 					</div>
 					<div class="wpr-security-scan-actions">
@@ -930,7 +938,7 @@ class WPR_Admin {
 		}
 
 		$checks = array_merge( $checks, $this->collect_local_security_checks( $plugins ) );
-		$checks = array_merge( $checks, $this->collect_external_security_provider_checks( $settings ) );
+		$checks = array_merge( $checks, $this->collect_external_security_provider_checks() );
 
 		return $checks;
 	}
@@ -1008,54 +1016,19 @@ class WPR_Admin {
 		return $checks;
 	}
 
-	private function collect_external_security_provider_checks( array $settings ): array {
-		$enabled = ! empty( $settings['security_monitor_enabled'] );
-		$checks  = array();
+	private function collect_external_security_provider_checks(): array {
+		// WPVulnerability, Wordfence, WPScan and Patchstack are not connected to
+		// any external service yet ("coming soon" in the UI) and can no longer
+		// be enabled or configured with an API key. Report them as such instead
+		// of a misleading "disabled"/"configured" status.
+		$checks = array();
 
-		if ( ! $enabled ) {
-			$checks[] = array(
-				'name'         => wpr_t( 'External vulnerability checks' ),
-				'status'       => 'notice',
-				'status_label' => wpr_t( 'Disabled' ),
-				'hint'         => wpr_t( 'External vulnerability checks are opt-in. Enable providers in Settings if you want to check plugin and theme slugs against third-party databases.' ),
-			);
-			return $checks;
-		}
-
-		$providers = array(
-			'WPVulnerability' => array( 'enabled' => ! empty( $settings['security_wpvulnerability_enabled'] ), 'needs_key' => false, 'key' => '' ),
-			'Wordfence Intelligence' => array( 'enabled' => ! empty( $settings['security_wordfence_enabled'] ), 'needs_key' => false, 'key' => '' ),
-			'WPScan' => array( 'enabled' => ! empty( $settings['security_wpscan_enabled'] ), 'needs_key' => true, 'key' => (string) ( $settings['security_wpscan_api_token'] ?? '' ) ),
-			'Patchstack' => array( 'enabled' => ! empty( $settings['security_patchstack_enabled'] ), 'needs_key' => true, 'key' => (string) ( $settings['security_patchstack_api_key'] ?? '' ) ),
-		);
-
-		foreach ( $providers as $provider => $config ) {
-			if ( empty( $config['enabled'] ) ) {
-				$checks[] = array(
-					'name'         => $provider,
-					'status'       => 'notice',
-					'status_label' => wpr_t( 'Disabled' ),
-					'hint'         => wpr_t( 'Provider is configured but currently disabled.' ),
-				);
-				continue;
-			}
-
-			if ( ! empty( $config['needs_key'] ) && '' === trim( (string) $config['key'] ) ) {
-				$checks[] = array(
-					'name'         => $provider,
-					'status'       => 'warning',
-					'status_label' => wpr_t( 'API key missing' ),
-					'hint'         => wpr_t( 'Enable this provider only after adding your own API credentials in Settings.' ),
-				);
-				continue;
-			}
-
-			$scan = $this->get_security_scan_result();
+		foreach ( array( 'WPVulnerability', 'Wordfence Intelligence', 'WPScan', 'Patchstack' ) as $provider ) {
 			$checks[] = array(
 				'name'         => $provider,
-				'status'       => 'compatible',
-				'status_label' => wpr_t( 'Enabled' ),
-				'hint'         => ! empty( $scan['timestamp'] ) ? sprintf( wpr_t( 'Provider is enabled. Last scan: %s.' ), wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $scan['timestamp'] ) ) : wpr_t( 'Provider is enabled. No external scan has been run yet.' ),
+				'status'       => 'notice',
+				'status_label' => wpr_t( 'Coming soon' ),
+				'hint'         => wpr_t( 'This provider is planned but not connected yet. No data is sent and no key is stored.' ),
 			);
 		}
 
@@ -2647,12 +2620,6 @@ class WPR_Admin {
 			'plugin_language'                  => $current['plugin_language'] ?? 'en_US',
 			'enable_google_fonts'              => isset( $post_data['enable_google_fonts'] ) ? absint( $post_data['enable_google_fonts'] ) : 0,
 			'security_monitor_enabled'         => isset( $post_data['security_monitor_enabled'] ) ? absint( $post_data['security_monitor_enabled'] ) : 0,
-			'security_wpvulnerability_enabled' => isset( $post_data['security_wpvulnerability_enabled'] ) ? absint( $post_data['security_wpvulnerability_enabled'] ) : 0,
-			'security_wordfence_enabled'       => isset( $post_data['security_wordfence_enabled'] ) ? absint( $post_data['security_wordfence_enabled'] ) : 0,
-			'security_wpscan_enabled'          => isset( $post_data['security_wpscan_enabled'] ) ? absint( $post_data['security_wpscan_enabled'] ) : 0,
-			'security_wpscan_api_token'        => isset( $post_data['security_wpscan_api_token'] ) ? $post_data['security_wpscan_api_token'] : '',
-			'security_patchstack_enabled'      => isset( $post_data['security_patchstack_enabled'] ) ? absint( $post_data['security_patchstack_enabled'] ) : 0,
-			'security_patchstack_api_key'      => isset( $post_data['security_patchstack_api_key'] ) ? $post_data['security_patchstack_api_key'] : '',
 			'global_style'                     => array(),
 			'custom_css'                       => isset( $post_data['custom_css'] ) ? $post_data['custom_css'] : '',
 		);

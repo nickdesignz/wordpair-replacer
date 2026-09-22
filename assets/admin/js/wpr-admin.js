@@ -686,8 +686,10 @@
 
 
 	function syncSecurityProviderSwitches() {
-		const $monitor = $('#wpr-security-monitor-enabled');
-		const enabled = $monitor.is(':checked');
+		// WPVulnerability, Wordfence, WPScan and Patchstack are not connected to
+		// any external service yet ("coming soon" in the UI). Keep them disabled
+		// and unchecked at all times, independent of the master monitor switch,
+		// so no API key can be entered or implied as active.
 		const selectors = [
 			'#wpr-security-wpvulnerability-enabled',
 			'#wpr-security-wordfence-enabled',
@@ -700,19 +702,9 @@
 			if (!$field.length) {
 				return;
 			}
-			if (typeof $field.data('wprRememberState') === 'undefined') {
-				$field.data('wprRememberState', $field.is(':checked') ? 1 : 0);
-			}
 
-			const $switch = $field.closest('.wpr-binary-switch');
-			if (!enabled) {
-				$field.prop('checked', false).prop('disabled', true);
-				$switch.addClass('is-monitor-muted');
-				return;
-			}
-
-			$field.prop('disabled', false).prop('checked', parseInt($field.data('wprRememberState'), 10) === 1);
-			$switch.removeClass('is-monitor-muted');
+			$field.prop('checked', false).prop('disabled', true);
+			$field.closest('.wpr-binary-switch').addClass('is-monitor-muted');
 		});
 	}
 
@@ -720,12 +712,6 @@
 		const data = {
 			enable_google_fonts: $('#wpr-enable-google-fonts').is(':checked') ? 1 : 0,
 			security_monitor_enabled: $('#wpr-security-monitor-enabled').is(':checked') ? 1 : 0,
-			security_wpvulnerability_enabled: ($('#wpr-security-monitor-enabled').is(':checked') ? $('#wpr-security-wpvulnerability-enabled').is(':checked') : parseInt($('#wpr-security-wpvulnerability-enabled').data('wprRememberState') || 0, 10)) ? 1 : 0,
-			security_wordfence_enabled: ($('#wpr-security-monitor-enabled').is(':checked') ? $('#wpr-security-wordfence-enabled').is(':checked') : parseInt($('#wpr-security-wordfence-enabled').data('wprRememberState') || 0, 10)) ? 1 : 0,
-			security_wpscan_enabled: ($('#wpr-security-monitor-enabled').is(':checked') ? $('#wpr-security-wpscan-enabled').is(':checked') : parseInt($('#wpr-security-wpscan-enabled').data('wprRememberState') || 0, 10)) ? 1 : 0,
-			security_wpscan_api_token: $('#wpr-security-wpscan-api-token').val(),
-			security_patchstack_enabled: ($('#wpr-security-monitor-enabled').is(':checked') ? $('#wpr-security-patchstack-enabled').is(':checked') : parseInt($('#wpr-security-patchstack-enabled').data('wprRememberState') || 0, 10)) ? 1 : 0,
-			security_patchstack_api_key: $('#wpr-security-patchstack-api-key').val(),
 			custom_css: $('#wpr-custom-css').val()
 		};
 

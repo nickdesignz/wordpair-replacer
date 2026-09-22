@@ -128,12 +128,19 @@ class WPR_Settings {
 		$settings['enable_google_fonts'] = ! empty( $input['enable_google_fonts'] ) ? 1 : 0;
 
 		$settings['security_monitor_enabled'] = ! empty( $input['security_monitor_enabled'] ) ? 1 : 0;
-		$settings['security_wpvulnerability_enabled'] = ! empty( $input['security_wpvulnerability_enabled'] ) ? 1 : 0;
-		$settings['security_wordfence_enabled'] = ! empty( $input['security_wordfence_enabled'] ) ? 1 : 0;
-		$settings['security_wpscan_enabled'] = ! empty( $input['security_wpscan_enabled'] ) ? 1 : 0;
-		$settings['security_patchstack_enabled'] = ! empty( $input['security_patchstack_enabled'] ) ? 1 : 0;
-		$settings['security_wpscan_api_token'] = isset( $input['security_wpscan_api_token'] ) ? sanitize_text_field( wp_unslash( $input['security_wpscan_api_token'] ) ) : '';
-		$settings['security_patchstack_api_key'] = isset( $input['security_patchstack_api_key'] ) ? sanitize_text_field( wp_unslash( $input['security_patchstack_api_key'] ) ) : '';
+
+		/*
+		 * External vulnerability providers (WPVulnerability, Wordfence, WPScan,
+		 * Patchstack) are not wired up to any outbound request yet. Force these
+		 * off/empty on every save so no real API key is ever persisted for a
+		 * feature that does not use it, regardless of what the client submits.
+		 */
+		$settings['security_wpvulnerability_enabled'] = 0;
+		$settings['security_wordfence_enabled']       = 0;
+		$settings['security_wpscan_enabled']          = 0;
+		$settings['security_patchstack_enabled']      = 0;
+		$settings['security_wpscan_api_token']        = '';
+		$settings['security_patchstack_api_key']      = '';
 
 		foreach ( array_keys( self::style_defaults() ) as $key ) {
 			$settings['global_style'][ $key ] = isset( $input['global_style'][ $key ] )

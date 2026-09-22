@@ -5,7 +5,7 @@ Tags: text replace, word replace, typography, css effects, animation
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,10 @@ Google Fonts are disabled by default. They are only loaded when explicitly enabl
 5. Frontend replacement example.
 
 == Changelog ==
+
+= 2.3.3 =
+* Security hardening: the WPVulnerability, Wordfence, Patchstack and WPScan security-scan providers are not yet connected to any external service. Their toggles and API key fields are now locked as "Coming soon" in the UI, and the backend no longer accepts or stores values for them, so no unused API key can end up in the database. Existing installs are cleaned up automatically on upgrade.
+* Completed missing German/English admin UI translations.
 
 = 2.1.2 =
 * Finalized support ticket ID format, English notification emails, sender copy, rate limiting and privacy-safe diagnostics.

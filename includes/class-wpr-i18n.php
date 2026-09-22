@@ -184,6 +184,8 @@ class WPR_I18n {
 
 			'%d update(s) available' => '%d Update(s) verfügbar',
 			'All' => 'Alle',
+			'Coming soon' => 'Bald verfügbar',
+			'This provider is planned but not connected yet. No data is sent and no key is stored.' => 'Dieser Anbieter ist geplant, aber noch nicht angebunden. Es werden keine Daten gesendet und kein Schlüssel gespeichert.',
 			'Blur in px' => 'Unschärfe in px',
 			'Bug / Error' => 'Fehler / Bug',
 			'Compatible' => 'Kompatibel',

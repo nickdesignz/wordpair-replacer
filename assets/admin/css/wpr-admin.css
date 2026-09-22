@@ -6051,6 +6051,28 @@ body.wpr-admin-dark .wpr-security-privacy-note strong {
 	padding: 0 12px !important;
 }
 
+.wpr-security-provider.is-coming-soon {
+	opacity: .6 !important;
+}
+
+.wpr-security-provider.is-coming-soon input[type="password"],
+.wpr-security-provider.is-coming-soon input[type="checkbox"] {
+	cursor: not-allowed !important;
+}
+
+.wpr-badge-soon {
+	display: inline-flex !important;
+	align-items: center !important;
+	padding: 3px 8px !important;
+	border-radius: 999px !important;
+	font-size: 10px !important;
+	font-weight: 800 !important;
+	text-transform: uppercase !important;
+	letter-spacing: .04em !important;
+	background: rgba(108,92,231,.14) !important;
+	color: var(--wpr-accent-dark) !important;
+}
+
 .wpr-conflict-card h2::after {
 	content: '2.2.0' !important;
 	display: inline-flex !important;
